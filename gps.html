@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Tracking - SAFAI-DUSHMAN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>SAFAI-DUSHMAN</h1>
+            </div>
+            <div class="user-profile">
+                <img src="profile.jpg" alt="Profile" class="profile-img">
+                <div class="user-info">
+                    <div class="username">Admin User</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="complaints.html"><i class="fas fa-exclamation-circle"></i>Complaints</a></li>
+                <li><a href="fuel.html"><i class="fas fa-gas-pump"></i>Fuel</a></li>
+                <li><a href="weighment.html"><i class="fas fa-weight"></i>Weighment</a></li>
+                <li><a href="customers.html"><i class="fas fa-users"></i>Customer Management</a></li>
+                <li><a href="tax.html"><i class="fas fa-file-invoice"></i>Municipal Tax</a></li>
+                <li class="active"><a href="gps.html"><i class="fas fa-map-marker-alt"></i>GPS</a></li>
+                <li><a href="banking.html"><i class="fas fa-university"></i>Banking CMS</a></li>
+                <li><a href="waste.html"><i class="fas fa-trash"></i>Waste Collection</a></li>
+                <li><a href="coverage.html"><i class="fas fa-map"></i>Coverage Monitoring</a></li>
+                <li><a href="pickup.html"><i class="fas fa-truck"></i>Pickup Services</a></li>
+                <li><a href="hrms.html"><i class="fas fa-hospital"></i>HRMS</a></li>
+                <li><a href="bins.html"><i class="fas fa-dumpster"></i>Bin Collection</a></li>
+                <li><a href="inventory.html"><i class="fas fa-boxes"></i>Inventory</a></li>
+                <li><a href="citizen.html"><i class="fas fa-users"></i>Citizen Corner</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                <li><a href="#" class="more-link"><i class="fas fa-ellipsis-h"></i>More</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-left">
+                    <div class="menu-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="header-title">
+                        <h2>GPS Tracking</h2>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search vehicles...">
+                    </div>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mathura</span>
+                    </div>
+                    <div class="helpline">
+                        <i class="fas fa-phone"></i>
+                        <span>Helpline: 1800-000-000</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- GPS Overview -->
+            <div class="dashboard-stats">
+                <div class="stat-card blue">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Active Vehicles</h3>
+                        <div class="stat-number">25</div>
+                        <small>Out of 30 total</small>
+                    </div>
+                </div>
+
+                <div class="stat-card green">
+                    <div class="stat-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Distance</h3>
+                        <div class="stat-number">1,250 km</div>
+                        <small>Today's coverage</small>
+                    </div>
+                </div>
+
+                <div class="stat-card orange">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Average Time</h3>
+                        <div class="stat-number">6.5 hrs</div>
+                        <small>Per vehicle</small>
+                    </div>
+                </div>
+
+                <div class="stat-card purple">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Route Efficiency</h3>
+                        <div class="stat-number">92%</div>
+                        <small>Based on targets</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="map-header">
+                    <h3>Live Vehicle Tracking</h3>
+                    <div class="map-controls">
+                        <button class="control-btn active" data-filter="all">All Vehicles</button>
+                        <button class="control-btn" data-filter="running">Running</button>
+                        <button class="control-btn" data-filter="stopped">Stopped</button>
+                        <button class="control-btn" data-filter="maintenance">Maintenance</button>
+                    </div>
+                </div>
+                <div id="map"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="status-dot running"></span>
+                        <span>Running</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="status-dot stopped"></span>
+                        <span>Stopped</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="status-dot maintenance"></span>
+                        <span>Maintenance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle List -->
+            <div class="vehicle-section">
+                <div class="section-header">
+                    <h3>Vehicle Status</h3>
+                    <div class="filter-options">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="running">Running</option>
+                            <option value="stopped">Stopped</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                        <select id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="truck">Trucks</option>
+                            <option value="van">Vans</option>
+                            <option value="auto">Auto Rickshaws</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="vehicle-list">
+                    <!-- Vehicle Item -->
+                    <div class="vehicle-item">
+                        <div class="vehicle-header">
+                            <div class="vehicle-info">
+                                <h4>Vehicle ID: VH-001</h4>
+                                <span class="vehicle-type">Garbage Truck</span>
+                            </div>
+                            <div class="vehicle-status running">Running</div>
+                        </div>
+                        <div class="vehicle-content">
+                            <div class="vehicle-metrics">
+                                <div class="metric">
+                                    <span class="label">Speed</span>
+                                    <span class="value">45 km/h</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="label">Distance</span>
+                                    <span class="value">125 km</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="label">Time</span>
+                                    <span class="value">2.5 hrs</span>
+                                </div>
+                            </div>
+                            <div class="vehicle-details">
+                                <div class="detail-row">
+                                    <span class="label">Driver:</span>
+                                    <span class="value">John Doe</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">Location:</span>
+                                    <span class="value">Zone A, Sector 1</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="label">Last Update:</span>
+                                    <span class="value">2 mins ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vehicle-actions">
+                            <button class="action-btn track">Track Live</button>
+                            <button class="action-btn route">View Route</button>
+                            <button class="action-btn history">History</button>
+                        </div>
+                    </div>
+
+                    <!-- More vehicle items... -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="shared.js"></script>
+    <script src="gps.js"></script>
+</body>
+</html>

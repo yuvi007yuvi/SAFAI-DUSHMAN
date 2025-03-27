@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SAFAI-DUSHMAN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>SAFAI-DUSHMAN</h1>
+            </div>
+            <div class="user-profile">
+                <img src="profile.jpg" alt="Profile" class="profile-img">
+                <div class="user-info">
+                    <div class="username">Admin User</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="complaints.html"><i class="fas fa-exclamation-circle"></i>Complaints</a></li>
+                <li><a href="fuel.html"><i class="fas fa-gas-pump"></i>Fuel</a></li>
+                <li><a href="weighment.html"><i class="fas fa-weight"></i>Weighment</a></li>
+                <li><a href="customers.html"><i class="fas fa-users"></i>Customer Management</a></li>
+                <li><a href="tax.html"><i class="fas fa-file-invoice"></i>Municipal Tax</a></li>
+                <li><a href="gps.html"><i class="fas fa-map-marker-alt"></i>GPS</a></li>
+                <li><a href="banking.html"><i class="fas fa-university"></i>Banking CMS</a></li>
+                <li><a href="waste.html"><i class="fas fa-trash"></i>Waste Collection</a></li>
+                <li><a href="coverage.html"><i class="fas fa-map"></i>Coverage Monitoring</a></li>
+                <li><a href="pickup.html"><i class="fas fa-truck"></i>Pickup Services</a></li>
+                <li><a href="hrms.html"><i class="fas fa-hospital"></i>HRMS</a></li>
+                <li><a href="bins.html"><i class="fas fa-dumpster"></i>Bin Collection</a></li>
+                <li><a href="inventory.html"><i class="fas fa-boxes"></i>Inventory</a></li>
+                <li><a href="citizen.html"><i class="fas fa-users"></i>Citizen Corner</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                <li><a href="#" class="more-link"><i class="fas fa-ellipsis-h"></i>More</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-left">
+                    <div class="menu-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="header-title">
+                        <h2>Dashboard Overview</h2>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mathura</span>
+                    </div>
+                    <div class="helpline">
+                        <i class="fas fa-phone"></i>
+                        <span>Helpline: 1800-000-000</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card waste">
+                    <div class="stat-icon">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>13817.52</h3>
+                        <div class="stat-label">Waste(kg)</div>
+                    </div>
+                    <a href="#" class="view-details">View Details</a>
+                </div>
+
+                <div class="stat-card vehicles">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>225</h3>
+                        <div class="stat-label">Vehicles</div>
+                    </div>
+                    <a href="#" class="view-details">View Details</a>
+                </div>
+
+                <div class="stat-card fuel">
+                    <div class="stat-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>31.5L/72.8M</h3>
+                        <div class="stat-label">Fuel/Cost(₹)</div>
+                    </div>
+                    <a href="#" class="view-details">View Details</a>
+                </div>
+
+                <div class="stat-card attendance">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>P446/T561</h3>
+                        <div class="stat-label">Attendance</div>
+                    </div>
+                    <a href="#" class="view-details">View Details</a>
+                </div>
+
+                <div class="stat-card complaints">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>74</h3>
+                        <div class="stat-label">Complaints</div>
+                    </div>
+                    <a href="#" class="view-details">View Details</a>
+                </div>
+
+                <div class="stat-card kyc">
+                    <div class="stat-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>0</h3>
+                        <div class="stat-label">User Count</div>
+                    </div>
+                    <a href="#" class="view-details">View Details</a>
+                </div>
+            </div>
+
+
+
+            <!-- Vehicle Map -->
+            <div class="vehicle-map-container">
+                <div class="section-header">
+                    <h3>Vehicle Locations</h3>
+                    <div class="map-filters">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                        <select id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="truck">Truck</option>
+                            <option value="van">Van</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="vehicleMap"></div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <div class="section-header">
+                    <h3>Recent Activity</h3>
+                    <button class="view-all">View All</button>
+                </div>
+                <div class="activity-list">
+                    <!-- Activity items will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="close-notifications"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="notification-list">
+            <!-- Notifications will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Language Panel -->
+    <div class="language-panel">
+        <div class="language-option" data-lang="en">English</div>
+        <div class="language-option" data-lang="hi">हिंदी</div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

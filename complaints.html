@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Management - SAFI-DUSHMAN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>SAFI-DUSHMAN</h1>
+            </div>
+            <div class="user-profile">
+                <img src="profile.jpg" alt="Profile" class="profile-img">
+                <div class="user-info">
+                    <div class="username">Admin User</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li class="active"><a href="complaints.html"><i class="fas fa-exclamation-circle"></i>Complaints</a></li>
+                <li><a href="fuel.html"><i class="fas fa-gas-pump"></i>Fuel</a></li>
+                <li><a href="weighment.html"><i class="fas fa-weight"></i>Weighment</a></li>
+                <li><a href="customers.html"><i class="fas fa-users"></i>Customer Management</a></li>
+                <li><a href="tax.html"><i class="fas fa-file-invoice"></i>Municipal Tax</a></li>
+                <li><a href="gps.html"><i class="fas fa-map-marker-alt"></i>GPS</a></li>
+                <li><a href="banking.html"><i class="fas fa-university"></i>Banking CMS</a></li>
+                <li><a href="waste.html"><i class="fas fa-trash"></i>Waste Collection</a></li>
+                <li><a href="coverage.html"><i class="fas fa-map"></i>Coverage Monitoring</a></li>
+                <li><a href="pickup.html"><i class="fas fa-truck"></i>Pickup Services</a></li>
+                <li><a href="hrms.html"><i class="fas fa-hospital"></i>HRMS</a></li>
+                <li><a href="bins.html"><i class="fas fa-dumpster"></i>Bin Collection</a></li>
+                <li><a href="inventory.html"><i class="fas fa-boxes"></i>Inventory</a></li>
+                <li><a href="citizen.html"><i class="fas fa-users"></i>Citizen Corner</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                <li><a href="#" class="more-link"><i class="fas fa-ellipsis-h"></i>More</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-left">
+                    <div class="menu-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="header-title">
+                        <h2>Complaints Management</h2>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search complaints...">
+                    </div>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mathura</span>
+                    </div>
+                    <div class="helpline">
+                        <i class="fas fa-phone"></i>
+                        <span>Helpline: 1800-000-000</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Complaints Overview -->
+            <div class="dashboard-stats">
+                <div class="stat-card blue">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Complaints</h3>
+                        <div class="stat-number">74</div>
+                        <small>Last 30 days</small>
+                    </div>
+                </div>
+
+                <div class="stat-card green">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Resolved</h3>
+                        <div class="stat-number">65</div>
+                        <small>87.8% resolution rate</small>
+                    </div>
+                </div>
+
+                <div class="stat-card orange">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Pending</h3>
+                        <div class="stat-number">9</div>
+                        <small>4.2 hrs avg. resolution time</small>
+                    </div>
+                </div>
+
+                <div class="stat-card purple">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Customer Satisfaction</h3>
+                        <div class="stat-number">4.5/5</div>
+                        <small>Based on feedback</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complaints List -->
+            <div class="complaints-section">
+                <div class="section-header">
+                    <h3>Recent Complaints</h3>
+                    <div class="filter-options">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                        <select id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="waste">Waste Collection</option>
+                            <option value="sanitation">Sanitation</option>
+                            <option value="infrastructure">Infrastructure</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="complaints-list">
+                    <!-- Complaint Item -->
+                    <div class="complaint-item">
+                        <div class="complaint-header">
+                            <div class="complaint-id">#CMT-001</div>
+                            <div class="complaint-status pending">Pending</div>
+                        </div>
+                        <div class="complaint-content">
+                            <h4>Garbage Collection Delay</h4>
+                            <p>Resident reported delayed garbage collection in Sector 7. Collection was scheduled for 9 AM but hasn't arrived yet.</p>
+                            <div class="complaint-meta">
+                                <span><i class="fas fa-user"></i> John Doe</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Sector 7, Mathura</span>
+                                <span><i class="fas fa-clock"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="complaint-actions">
+                            <button class="action-btn assign">Assign</button>
+                            <button class="action-btn view">View Details</button>
+                            <button class="action-btn resolve">Resolve</button>
+                        </div>
+                    </div>
+
+                    <!-- More complaint items... -->
+                </div>
+            </div>
+
+            <!-- Complaints Analytics -->
+            <div class="analytics-section">
+                <div class="section-header">
+                    <h3>Complaints Analytics</h3>
+                    <div class="time-filters">
+                        <span class="filter active">Daily</span>
+                        <span class="filter">Weekly</span>
+                        <span class="filter">Monthly</span>
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h4>Complaints by Type</h4>
+                        <div id="complaintsTypeChart"></div>
+                    </div>
+                    <div class="analytics-card">
+                        <h4>Resolution Time Trend</h4>
+                        <div id="resolutionTimeChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="shared.js"></script>
+    <script src="complaints.js"></script>
+</body>
+</html> 

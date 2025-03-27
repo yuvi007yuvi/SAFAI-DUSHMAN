@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFAI-DUSHMAN - Workers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>SAFAI-DUSHMAN</h1>
+            </div>
+            <div class="user-profile">
+                <img src="profile.jpg" alt="Profile" class="profile-img">
+                <div class="user-info">
+                    <div class="username">Admin User</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="vehicles.html"><i class="fas fa-truck"></i>Vehicles</a></li>
+                <li class="active"><a href="workers.html"><i class="fas fa-users"></i>Workers</a></li>
+                <li><a href="complaints.html"><i class="fas fa-exclamation-circle"></i>Complaints</a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-bar"></i>Reports</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-left">
+                    <div class="menu-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="header-title">
+                        <h2>Worker Management</h2>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search workers...">
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Worker Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card blue">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Workers</h3>
+                        <div class="stat-number">561</div>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Present Today</h3>
+                        <div class="stat-number">445</div>
+                    </div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>On Leave</h3>
+                        <div class="stat-number">25</div>
+                    </div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Absent</h3>
+                        <div class="stat-number">91</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Worker Management Section -->
+            <div class="worker-management">
+                <div class="action-bar">
+                    <button class="add-worker-btn"><i class="fas fa-plus"></i> Add Worker</button>
+                    <div class="filter-options">
+                        <select id="departmentFilter">
+                            <option value="all">All Departments</option>
+                            <option value="cleaning">Street Cleaning</option>
+                            <option value="collection">Garbage Collection</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="onLeave">On Leave</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="worker-list">
+                    <!-- Worker items will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Worker Distribution Chart -->
+            <div class="chart-section">
+                <div class="detail-section">
+                    <h3>Worker Distribution by Department</h3>
+                    <div id="workerDistChart"></div>
+                </div>
+                <div class="detail-section">
+                    <h3>Attendance Trends</h3>
+                    <div id="attendanceChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="workers.js"></script>
+</body>
+</html>
