@@ -3,226 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAFAI-MITRAA - Welcome</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>SAFAI-DUSHMAN - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Add Leaflet CSS and JS for maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <!-- Add ApexCharts for better graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <style>
-        .welcome-container {
-            display: flex;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
             height: 100vh;
-        }
-
-        .welcome-sidenav {
-            width: 300px;
-            background: #673ab7;
-            color: white;
-            padding: 40px 20px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .welcome-logo {
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-logo {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .welcome-logo h1 {
-            color: white;
+        .login-logo h1 {
+            color: #673ab7;
             font-size: 28px;
             margin-bottom: 10px;
         }
 
-        .welcome-logo p {
-            color: rgba(255, 255, 255, 0.8);
+        .login-logo p {
+            color: #666;
             font-size: 14px;
         }
 
-        .welcome-menu {
-            list-style: none;
-            padding: 0;
-        }
-
-        .welcome-menu li {
-            margin-bottom: 10px;
-        }
-
-        .welcome-menu a {
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
+        .login-form {
             display: flex;
-            align-items: center;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .welcome-menu a:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .welcome-menu i {
-            margin-right: 15px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .welcome-content {
-            flex: 1;
-            padding: 40px;
-            background: #f5f5f5;
-            overflow-y: auto;
-        }
-
-        .welcome-header {
-            margin-bottom: 40px;
-        }
-
-        .welcome-header h2 {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .welcome-header p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            flex-direction: column;
             gap: 20px;
-            margin-bottom: 40px;
         }
 
-        .action-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+        .form-group {
+            position: relative;
         }
 
-        .action-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .action-card h3 {
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             color: #673ab7;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .action-card p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 14px;
-            line-height: 1.5;
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
         }
 
-        .action-button {
-            display: inline-block;
-            padding: 8px 15px;
+        .form-group input:focus {
+            outline: none;
+            border-color: #673ab7;
+        }
+
+        .login-button {
             background: #673ab7;
             color: white;
-            text-decoration: none;
+            padding: 15px;
+            border: none;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            cursor: pointer;
             transition: background 0.3s ease;
         }
 
-        .action-button:hover {
+        .login-button:hover {
             background: #5e35b1;
         }
 
-        .welcome-footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
+        .error-message {
+            color: #d32f2f;
             font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .welcome-container {
-                flex-direction: column;
-            }
-
-            .welcome-sidenav {
-                width: 100%;
-                padding: 20px;
-            }
-
-            .welcome-content {
-                padding: 20px;
-            }
+            text-align: center;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="welcome-container">
-        <nav class="welcome-sidenav">
-            <div class="welcome-logo">
-                <h1>SAFAI-MITRAA</h1>
-                <p>Smart City Management System</p>
+    <div class="login-container">
+        <div class="login-logo">
+            <h1>SAFAI-DUSHMAN</h1>
+            <p>Smart WASTE Management System</p>
+        </div>
+        <form id="loginForm" class="login-form" onsubmit="return validateLogin(event)">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
             </div>
-            <ul class="welcome-menu">
-                <li><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
-                <li><a href="vehicles.html"><i class="fas fa-truck"></i>Vehicle Management</a></li>
-                <li><a href="workers.html"><i class="fas fa-users"></i>Worker Management</a></li>
-                <li><a href="complaints.html"><i class="fas fa-exclamation-circle"></i>Complaints</a></li>
-                <li><a href="reports.html"><i class="fas fa-chart-bar"></i>Reports & Analytics</a></li>
-                <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
-            </ul>
-        </nav>
-
-        <main class="welcome-content">
-            <div class="welcome-header">
-                <h2>Welcome to SAFAI-MITRAA</h2>
-                <p>Your comprehensive solution for smart city waste management and monitoring. Choose from the quick actions below or navigate using the menu.</p>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
             </div>
-
-            <div class="quick-actions">
-                <div class="action-card">
-                    <h3><i class="fas fa-map-marked-alt"></i>Live Tracking</h3>
-                    <p>Monitor real-time locations of all vehicles and track their current status.</p>
-                    <a href="dashboard.html#map" class="action-button">View Map</a>
-                </div>
-
-                <div class="action-card">
-                    <h3><i class="fas fa-chart-line"></i>Analytics</h3>
-                    <p>View detailed analytics and reports about waste collection and worker performance.</p>
-                    <a href="reports.html" class="action-button">View Reports</a>
-                </div>
-
-                <div class="action-card">
-                    <h3><i class="fas fa-tasks"></i>Manage Tasks</h3>
-                    <p>Assign and monitor tasks for workers and vehicles in your fleet.</p>
-                    <a href="workers.html" class="action-button">Manage</a>
-                </div>
-
-                <div class="action-card">
-                    <h3><i class="fas fa-headset"></i>Support</h3>
-                    <p>Get help and support for any issues or questions you may have.</p>
-                    <a href="settings.html#support" class="action-button">Get Help</a>
-                </div>
-            </div>
-
-            <div class="welcome-footer">
-                <p>© 2024 SAFAI-MITRAA. All rights reserved.</p>
-            </div>
-        </main>
+            <p id="errorMessage" class="error-message">Invalid username or password</p>
+            <button type="submit" class="login-button">Login</button>
+        </form>
     </div>
-    <script src="shared.js"></script>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // For demonstration, using a simple hardcoded credential
+            // In production, this should be replaced with proper backend authentication
+            if (username === 'admin' && password === 'admin123') {
+                // Store authentication state
+                sessionStorage.setItem('isAuthenticated', 'true');
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Check if user is already authenticated
+        window.onload = function() {
+            if (sessionStorage.getItem('isAuthenticated') === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+        }
+    </script>
 </body>
 </html>
